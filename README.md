@@ -36,3 +36,5 @@ Now click the "Keys" button. You will now **see the "key" that was passed to the
 > In your default locale, or before you start actually translating, they might not be any different. Then again you might be using keywords rather than complete sentences in your i18n helper calls, in which case they will be quite different.
 
 When you are done, you can click "i18n" again to close the internationalization debugger.
+
+**This module is for debugging static text localization in your templates.** For translation of user-entered content, see [apostrophe-workflow](https://github.com/apostrophecms/apostrophe-workflow).
