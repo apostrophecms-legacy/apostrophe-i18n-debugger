@@ -1,12 +1,17 @@
 module.exports = {
   afterConstruct: function(self) {
     self.pushAssets();
+    self.addToAdminBar();
   },
   construct: function(self, options) {
     self.pushAssets = function() {
       self.pushAsset('script', 'user');
+      self.pushAsset('script', 'modal');
       self.pushAsset('stylesheet', 'user');
     };
+    self.on('apostrophe-pages:beforeSend', 'singleton', function(req) {
+      self.pushCreateSingleton(req, 'always');
+    });
     self.expressMiddleware = function(req, res, next) {
       if (req.query.i18nDebugger === '1') {
         req.session.i18nDebuggerActive = true;
@@ -18,18 +23,32 @@ module.exports = {
       }
       return next();
     };
-    self.menu = function(req) {
-      if (!req.user) {
-        return '';
-      }
-      return self.partial('menu', { active: req.session.i18nDebuggerActive });
+
+    self.addToAdminBar = function() {
+      self.apos.adminBar.add(self.__meta.name, 'i18n 🐞', 'apos-i18n-debugger');
     };
-    self.apiRoute('post', 'fetch', function(req, res, next) {
+
+    self.renderRoute('post', 'modal', function(req, res, next) {
       return next(null, {
-        tooltips: req.session.i18nDebugger || {}
+        template: 'modal',
+        data: {
+          active: req.session.i18nDebuggerActive
+        }
       });
     });
-    self.apos.pages.addAfterContextMenu(self.menu);
+
+    self.apiRoute('post', 'fetch', function(req, res, next) {
+      return next(null, {
+        map: req.session.i18nDebugger || {}
+      });
+    });
+
+    self.getCreateSingletonOptions = function(req) {
+      return {
+        active: req.session.i18nDebuggerActive,
+        action: self.action
+      };
+    };
 
     // Use the super pattern to patch the i18n wrapper function
     // of the apostrophe-templates module

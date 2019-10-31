@@ -1,0 +1,31 @@
+{%- extends "apostrophe-modal:base.html" -%}
+{%- import 'apostrophe-ui:components/buttons.html' as buttons -%}
+
+{%- block modalClass -%}
+  apos-i18n-debugger-modal apos-ui-modal-no-sidebar
+{%- endblock -%}
+
+{%- block controls -%}
+  {{ buttons.major('Done', { action: 'cancel' }) }}
+{%- endblock -%}
+
+{%- block label -%}
+  {{ __('i18n Debugger') }}
+{%- endblock -%}
+
+{%- block instructions -%}
+  Click "Activate" to turn on the i18n debugger. This will refresh the page and initially highlight i18n translations inside ⸨...⸩. You can then click "Show Keys" to toggle to displaying keys instead of translations, inside 《...》. You can click "Done" at any time to explore the site in your chosen debugging mode, then return to this view by clicking "i18n debugger" in the admin bar.
+{%- endblock -%}
+
+{%- block body -%}
+  {% if data.active %}
+    {# Buttons of the debugger itself are untranslated for chicken and #}
+    {# egg reasons #}
+    <button data-i18n-debugger-deactivate class="apos-button apos-i18n-debugger-deactivate">Deactivate</button>
+    <button data-i18n-debugger-toggle="keys" class="apos-button apos-i18n-debugger-toggle">Show Keys</button>
+    <button data-i18n-debugger-toggle="translations" class="apos-button apos-i18n-debugger-toggle apos-active">Show Translations</button>
+  {% else %}
+    <button data-i18n-debugger-activate class="apos-button apos-i18n-debugger-activate">Activate</button>
+  {% endif %}
+{%- endblock -%}
+
