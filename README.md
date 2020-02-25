@@ -1,9 +1,9 @@
 # apostrophe-i18n-debugger
 
 This module helps you find static text in your templates that is not ready
-for localization and internationalization (i18n) with the 
+for localization and internationalization (i18n) with the
 [i18n helpers](https://www.npmjs.com/package/i18n) included in
-[ApostropheCMS](https://apostrophecms.org).
+[ApostropheCMS](https://apostrophecms.org). It works only when a user is logged in.
 
 ## Installation
 

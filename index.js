@@ -10,7 +10,9 @@ module.exports = {
       self.pushAsset('stylesheet', 'user');
     };
     self.on('apostrophe-pages:beforeSend', 'singleton', function(req) {
-      self.pushCreateSingleton(req, 'always');
+      if (req.user) {
+        self.pushCreateSingleton(req, 'always');
+      }
     });
     self.expressMiddleware = function(req, res, next) {
       if (req.query.i18nDebugger === '1') {
