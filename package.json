@@ -1,6 +1,6 @@
 {
   "name": "apostrophe-i18n-debugger",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Helps you find static text that has not been wrapped for internationalization, or find the right translation key to translate something.",
   "main": "index.js",
   "scripts": {
