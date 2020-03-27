@@ -2,8 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:12-browsers
-      - image: latest
+      - image: circleci/node:10-browsers
+      - image: mongo:3.6.11
     steps:
       - checkout
       - run:
