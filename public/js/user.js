@@ -104,7 +104,7 @@ apos.define('apostrophe-i18n-debugger', {
 
       var textNode;
 
-      while (textNode === walker.nextNode()) {
+      while ((textNode = walker.nextNode())) {
         var text = textNode.textContent;
         var i = 0;
         while (true) {
