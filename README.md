@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/apostrophecms/apostrophe-i18n-debugger/tree/master.svg?style=svg)](https://circleci.com/gh/apostrophecms/apostrophe-i18n-debugger/tree/master)
+
 # apostrophe-i18n-debugger
 
 This module helps you find static text in your templates that is not ready
