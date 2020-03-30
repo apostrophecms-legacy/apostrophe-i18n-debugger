@@ -148,12 +148,3 @@ apos.define('apostrophe-i18n-debugger', {
     };
   }
 });
-
-$(function() {
-  apos.on('i18nDebuggerMaps', function(e) {
-    console.error(e);
-  });
-  apos.on('i18nDebuggerChange', function(e) {
-    console.error(e);
-  });
-});
