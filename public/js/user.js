@@ -1,3 +1,4 @@
+/* globals NodeFilter */
 apos.define('apostrophe-i18n-debugger', {
   extend: 'apostrophe-context',
   afterConstruct: function(self) {
@@ -83,7 +84,7 @@ apos.define('apostrophe-i18n-debugger', {
       var map = i18nMap;
       var open = '⸨';
       var close = '⸩';
-      var newOpen = '《'; 
+      var newOpen = '《';
       var newClose = '》';
 
       if (!keys) {
@@ -95,16 +96,15 @@ apos.define('apostrophe-i18n-debugger', {
       }
 
       var walker = document.createTreeWalker(
-        document.body, 
-        NodeFilter.SHOW_TEXT, 
-        null, 
+        document.body,
+        NodeFilter.SHOW_TEXT,
+        null,
         false
       );
 
       var textNode;
-      var textNodes = [];
 
-      while (textNode = walker.nextNode()) {
+      while ((textNode = walker.nextNode())) {
         var text = textNode.textContent;
         var i = 0;
         while (true) {
@@ -147,13 +147,4 @@ apos.define('apostrophe-i18n-debugger', {
       });
     };
   }
-});
-
-$(function() {
-  apos.on('i18nDebuggerMaps', function(e) {
-    console.log(e);
-  });
-  apos.on('i18nDebuggerChange', function(e) {
-    console.log(e);
-  });
 });
