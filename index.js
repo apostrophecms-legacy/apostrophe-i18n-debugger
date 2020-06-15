@@ -55,11 +55,15 @@ module.exports = {
     // Use the super pattern to patch the i18n wrapper function
     // of the apostrophe-templates module
     var superI18n = self.apos.templates.i18n;
-    self.apos.templates.i18n = function(req, name, key) {
+    self.apos.templates.i18n = function(req, name, namespace, key) {
       if (req.session.i18nDebuggerActive) {
         req.session.i18nDebugger = req.session.i18nDebugger || {};
       }
       var s = superI18n.apply(null, Array.prototype.slice.call(arguments));
+      if (name.substring(0, 4) !== '__ns') {
+        key = namespace;
+        namespace = undefined;
+      }
       if (req.session.i18nDebuggerActive) {
         req.session.i18nDebugger[s] = key;
         return '⸨' + s + '⸩';

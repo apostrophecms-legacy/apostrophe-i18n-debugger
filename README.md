@@ -82,3 +82,7 @@ apos.modules['apostrophe-i18n-debugger'].options.active
 ```
 
 Note that when the debugger first activates the user is always looking at translations, not keys. You will know if this changes by listening for `i18nDebuggerChange` events.
+
+## Namespacing
+
+Apostrophe has basic support for separate namespaces of i18n keys. However, because of the impact on the layout of the display, the namespace associated with a key is not displayed by the debugger. Generally it is clear from context, for instance anything in the Apostrophe admin UI is likely to be in the `apostrophe` namespace.
