@@ -1,8 +1,12 @@
 # Changelog
 
-## 2.1.2
+## 2.1.3
 
 Basic compatibility with the namespaced i18n functions: don't just display "apostrophe" as the key for namespaced keys.
+
+## 2.1.2
+
+eslint rules, no code changes.
 
 ## 2.1.1
 
