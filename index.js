@@ -28,6 +28,10 @@ module.exports = {
 
     self.addToAdminBar = function() {
       self.apos.adminBar.add(self.__meta.name, 'i18n 🐞', 'apos-i18n-debugger');
+      self.apos.permissions.add({
+        value: 'apos-i18n-debugger',
+        label: 'I18n Debugger'
+      });
     };
 
     self.renderRoute('post', 'modal', function(req, res, next) {
