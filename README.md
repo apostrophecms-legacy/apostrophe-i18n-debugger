@@ -86,3 +86,8 @@ Note that when the debugger first activates the user is always looking at transl
 ## Namespacing
 
 Apostrophe has basic support for separate namespaces of i18n keys. However, because of the impact on the layout of the display, the namespace associated with a key is not displayed by the debugger. Generally it is clear from context, for instance anything in the Apostrophe admin UI is likely to be in the `apostrophe` namespace.
+
+## Permissions
+
+By default, only users with the site-wide admin permission have access to the i18n debugger. If another group needs access, you can edit the group, click on the `Permissions` tab, and check the `I18n Debugger` box. If you do not see `Groups` on your admin bar, see the apostrophe permissions documentation for how to activate editable groups.
+

@@ -28,9 +28,16 @@ module.exports = {
 
     self.addToAdminBar = function() {
       self.apos.adminBar.add(self.__meta.name, 'i18n 🐞', 'apos-i18n-debugger');
+      self.apos.permissions.add({
+        value: 'apos-i18n-debugger',
+        label: 'I18n Debugger'
+      });
     };
 
     self.renderRoute('post', 'modal', function(req, res, next) {
+      if (!self.apos.permissions.can(req, 'apos-i18n-debugger')) {
+        return res.status(403).send('forbidden');
+      }
       return next(null, {
         template: 'modal',
         data: {
@@ -40,6 +47,9 @@ module.exports = {
     });
 
     self.apiRoute('post', 'fetch', function(req, res, next) {
+      if (!self.apos.permissions.can(req, 'apos-i18n-debugger')) {
+        return res.status(403).send('forbidden');
+      }
       return next(null, {
         map: req.session.i18nDebugger || {}
       });
