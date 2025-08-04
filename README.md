@@ -1,3 +1,7 @@
+# ⛔️ **DEPRECATED** — do not use for new projects
+
+See [our current docs](https://docs.apostrophecms.org/)
+
 [![CircleCI](https://circleci.com/gh/apostrophecms/apostrophe-i18n-debugger/tree/master.svg?style=svg)](https://circleci.com/gh/apostrophecms/apostrophe-i18n-debugger/tree/master)
 
 # apostrophe-i18n-debugger
